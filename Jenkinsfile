@@ -10,10 +10,8 @@ pipeline{
             steps{
 		script{
                 	sh '''
-		echo "Executing Terraform Init"
-
-		terraform init -backend-config="bucket=${S3_BUCKET}" -backend-config="key=${TF_STATE_KEY}" -backend-config="region=${AWS_REGION}"
-		'''
+			echo "Executing Terraform Init"
+			terraform init -backend-config="bucket=${S3_BUCKET}" -backend-config="key=${TF_STATE_KEY}" -backend-config="region=${AWS_REGION}"			'''
 		}
             }
         }
@@ -21,9 +19,9 @@ pipeline{
             steps{
 		script {
 			sh '''
-                    echo "Validating Terraform Code"
-                    terraform validate
-                    '''
+                    	echo "Validating Terraform Code"
+                    	terraform validate
+                    	'''
 			}
 		}
 	}
@@ -31,9 +29,9 @@ pipeline{
             steps{
 		script{
 			sh'''
-                echo "Executing Terraform Plan"
-		terraform plan
-		'''
+                	echo "Executing Terraform Plan"
+			terraform plan
+			'''
 		}				
             }
         }
@@ -41,9 +39,9 @@ pipeline{
             steps{
 		script {
 			sh '''
-                echo "Executing Terraform Apply"
-		terraform apply -auto-approve
-		'''
+                	echo "Executing Terraform Apply"
+			terraform apply -auto-approve
+			'''
 		}
             }
         }
